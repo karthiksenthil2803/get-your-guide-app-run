@@ -55,6 +55,41 @@ You do not need to change these variables from the compose file.
 ![Docker Container](images/container_after_docker_compose.png)
 Here, you can see that there is a service named web-scraper, click on it's port section and it should lead you to the application Swagger endpoint.
 
+### 5. App Info
+The app consists of two endpoints, ```/search``` and ```/scrape```. The provided swagger-ui has the details regarding the request formats and parameters necessary for the endpoints.
+
+![UI](images/Swagger_UI.png)
+
+A Google Maps API Key is required in order for the PlaceId generation. The API Key must have the Geocoding API enabled.
+
+![API_KEY](images/MAPS_API_KEY.png)
+
+This API_KEY will be sent as part of the request in the ```/scrape``` endpoint to retrieve the `Google PlaceId` for each itinerary location. A sample working API Key will be provided in **Fiverr chat**.
+
+The request body format for the `/scrape` enpoint is 
+
+```bash
+{
+  "query": "North America",
+  "limit": 10,
+  "min_stops": 2,
+  "GOOGLE_MAPS_API_KEY": ""
+}
+```
+| Parameter   | Description                            |
+|------------|----------------------------------------|
+| query  | The string that is to be searched  getyourguide.com              |
+| limit       | The max number of events to be inserted into the database    |
+| min_stops | The number of minimum stops that the tour itinerary needs to have (does not include the pickup and drop off points)
+
+The request parameter format for `/search` endpoint is
+```bash
+query: "Search Query"
+```
+| Parameter   | Description                            |
+|------------|----------------------------------------|
+| query  | The string that is to be searched  for to match events in the `mongo db` database.              |
+
 ## Contact
 
 Karthik Senthil (karthiksenthil2803@gmail.com)
