@@ -2,10 +2,10 @@ services:
   web-scraper:
     image: karthiksenthil2803/get-your-guide-web-scraper:latest
     ports:
-      - "3000:3000" # Map container port 3000 to host port 3000
+      - "8180:8180" # Map container port 3000 to host port 3000
     environment:
       - MONGO_URI=mongodb://mongo:27017/get-your-guide
-      - PORT=3000 # Connect to the MongoDB service
+      - PORT=8180 # App port
 
   mongo:
     image: mongo:8.0.6 # Use the official MongoDB image
